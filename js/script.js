@@ -3,7 +3,7 @@ let currentStep = 1;
 const totalSteps = 8;
 
 // Google Apps Script Web App URL (Replace with your deployed URL)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-OiDroxF-q1sJKbJnFHqdJh9h8dx7RL_igGlRiLUYggr7LCeOafiasgc9DhAr2B__/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyrQa4J7rebGDu2uRmoCLS4Frho6bHvEmJWSm6YfugwqiHu9UYQtEd8WDjh6irslohp/exec';
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -47,6 +47,12 @@ function setupEventListeners() {
     document.querySelectorAll('input[name="technicalSkills"], input[name="softSkills"]').forEach(checkbox => {
         checkbox.addEventListener('change', updateSkillEmbedding);
     });
+    
+    // Handle current status change
+    const currentStatusSelect = document.getElementById('currentStatus');
+    if (currentStatusSelect) {
+        currentStatusSelect.addEventListener('change', handleCurrentStatusChange);
+    }
 }
 
 // Multi-Select Dropdown Setup
@@ -114,6 +120,31 @@ function setupSearchableMultiSelect() {
     
     // Preferred Roles Search
     setupSearch('preferredRolesSearch', 'preferredRolesSelect');
+    
+    // Current Job Role Search
+    setupSearch('currentJobRoleSearch', 'currentJobRoleSelect');
+}
+
+// Handle Current Status Change
+function handleCurrentStatusChange() {
+    const currentStatus = document.getElementById('currentStatus').value;
+    const currentJobRoleGroup = document.getElementById('currentJobRoleGroup');
+    const currentJobRoleRadios = document.querySelectorAll('input[name="currentJobRole"]');
+    
+    if (currentStatus === 'working') {
+        currentJobRoleGroup.style.display = 'block';
+        // Make job role required when working
+        currentJobRoleRadios.forEach(radio => {
+            radio.setAttribute('data-conditionally-required', 'true');
+        });
+    } else {
+        currentJobRoleGroup.style.display = 'none';
+        // Remove required when student
+        currentJobRoleRadios.forEach(radio => {
+            radio.removeAttribute('data-conditionally-required');
+            radio.checked = false;
+        });
+    }
 }
 
 // Setup Search Functionality
@@ -247,6 +278,21 @@ function validateStep(step) {
         }
     });
     
+    // Check conditionally required fields (current job role when working)
+    const currentStatus = document.getElementById('currentStatus');
+    if (currentStatus && currentStatus.value === 'working') {
+        const jobRoleRadios = document.querySelectorAll('input[name="currentJobRole"]');
+        const isJobRoleSelected = Array.from(jobRoleRadios).some(radio => radio.checked);
+        
+        if (!isJobRoleSelected) {
+            isValid = false;
+            const jobRoleGroup = document.getElementById('currentJobRoleGroup');
+            if (jobRoleGroup) {
+                showValidationError(jobRoleGroup.querySelector('label'), 'Please select your current job role');
+            }
+        }
+    }
+    
     if (!isValid) {
         alert('Please fill in all required fields before proceeding.');
     }
@@ -376,6 +422,17 @@ function populateForm(data) {
         }
     });
     
+    // Populate radio button for current job role
+    if (data.current_job_role && data.current_status === 'working') {
+        const radio = document.querySelector(`input[name="currentJobRole"][value="${data.current_job_role}"]`);
+        if (radio) radio.checked = true;
+    }
+    
+    // Trigger current status change to show/hide job role field
+    if (data.current_status) {
+        handleCurrentStatusChange();
+    }
+    
     // Update calculated fields
     calculateAcademicConsistency();
     updateSkillEmbedding();
@@ -448,7 +505,11 @@ function collectFormData() {
         extraversion: parseInt(document.getElementById('extraversion').value) || 0,
         openness: parseInt(document.getElementById('openness').value) || 0,
         agreeableness: parseInt(document.getElementById('agreeableness').value) || 0,
-        emotional_stability: parseInt(document.getElementById('emotionalStability').value) || 0
+        emotional_stability: parseInt(document.getElementById('emotionalStability').value) || 0,
+        
+        // Current Status and Job Role (Label for dataset)
+        current_status: document.getElementById('currentStatus').value || '',
+        current_job_role: document.getElementById('currentStatus').value === 'student' ? 'Student' : getSelectedRadioValue('currentJobRole')
     };
     
     return formData;
@@ -458,6 +519,11 @@ function collectFormData() {
 function getCheckedValues(name) {
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
         .map(cb => cb.value);
+}
+
+function getSelectedRadioValue(name) {
+    const selectedRadio = document.querySelector(`input[name="${name}"]:checked`);
+    return selectedRadio ? selectedRadio.value : '';
 }
 
 function generateUUID() {
