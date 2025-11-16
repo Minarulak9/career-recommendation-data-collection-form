@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Recommendation System - Data Collection</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="form-header">
+            <h1>Career Recommendation System</h1>
+            <p class="subtitle">Help us understand your profile to provide better career recommendations</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Step 1 of 8</div>
+        </div>
+
+        <!-- Form -->
+        <form id="careerForm">
+            <!-- Step 1: Personal Information -->
+            <div class="form-step active" data-step="1">
+                <h2 class="step-title">Personal Information</h2>
+                <p class="step-description">Tell us about yourself</p>
+
+                <div class="form-group">
+                    <label for="age">Age <span class="required">*</span></label>
+                    <input type="number" id="age" name="age" min="18" max="50" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender <span class="required">*</span></label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location <span class="required">*</span></label>
+                    <input type="text" id="location" name="location" placeholder="Enter your city" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="languages">Languages Spoken <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="Select all languages you can speak fluently">?</span>
+                    </label>
+                    <div class="multi-select" id="languagesSelect">
+                        <div class="multi-select-header">
+                            <span class="multi-select-text">Select languages...</span>
+                            <span class="multi-select-arrow">▼</span>
+                        </div>
+                        <div class="multi-select-options">
+                            <label><input type="checkbox" name="languages" value="Bengali"> Bengali</label>
+                            <label><input type="checkbox" name="languages" value="English"> English</label>
+                            <label><input type="checkbox" name="languages" value="Hindi"> Hindi</label>
+                            <label><input type="checkbox" name="languages" value="Tamil"> Tamil</label>
+                            <label><input type="checkbox" name="languages" value="Telugu"> Telugu</label>
+                            <label><input type="checkbox" name="languages" value="Marathi"> Marathi</label>
+                            <label><input type="checkbox" name="languages" value="Gujarati"> Gujarati</label>
+                            <label><input type="checkbox" name="languages" value="Kannada"> Kannada</label>
+                            <label><input type="checkbox" name="languages" value="Malayalam"> Malayalam</label>
+                            <label><input type="checkbox" name="languages" value="Punjabi"> Punjabi</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Academic Performance -->
+            <div class="form-step" data-step="2">
+                <h2 class="step-title">Academic Performance</h2>
+                <p class="step-description">Share your educational background</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="class10">Class 10 Percentage <span class="required">*</span></label>
+                        <input type="number" id="class10" name="class10" min="0" max="100" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class12">Class 12 Percentage <span class="required">*</span></label>
+                        <input type="number" id="class12" name="class12" min="0" max="100" step="0.01" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="class12Stream">Class 12 Stream <span class="required">*</span></label>
+                    <select id="class12Stream" name="class12Stream" required>
+                        <option value="">Select Stream</option>
+                        <option value="Science">Science</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ugMajor">Undergraduate Major <span class="required">*</span></label>
+                    <input type="text" id="ugMajor" name="ugMajor" placeholder="e.g., Computer Science" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ugCGPA">Undergraduate CGPA <span class="required">*</span></label>
+                    <input type="number" id="ugCGPA" name="ugCGPA" min="0" max="10" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gradMajor">Graduation Major</label>
+                    <input type="text" id="gradMajor" name="gradMajor" placeholder="Leave blank if not applicable">
+                </div>
+
+                <div class="form-group">
+                    <label for="gradCGPA">Graduation CGPA</label>
+                    <input type="number" id="gradCGPA" name="gradCGPA" min="0" max="10" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="highestEducation">Highest Education Level <span class="required">*</span></label>
+                    <select id="highestEducation" name="highestEducation" required>
+                        <option value="">Select Level</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="BTech">BTech</option>
+                        <option value="MTech">MTech</option>
+                        <option value="MBA">MBA</option>
+                        <option value="PhD">PhD</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="standardizedTest">Standardized Test Score (0-100)</label>
+                    <input type="number" id="standardizedTest" name="standardizedTest" min="0" max="100" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="academicConsistency">Academic Consistency Score
+                        <span class="tooltip" data-tooltip="Auto-calculated based on your grades">?</span>
+                    </label>
+                    <input type="number" id="academicConsistency" name="academicConsistency" min="0" max="1" step="0.01" readonly>
+                    <small class="field-note">Auto-calculated from your grades</small>
+                </div>
+            </div>
+
+            <!-- Step 3: Technical & Soft Skills -->
+            <div class="form-step" data-step="3">
+                <h2 class="step-title">Technical & Soft Skills</h2>
+                <p class="step-description">What skills do you have?</p>
+
+                <div class="form-group">
+                    <label for="technicalSkills">Technical Skills <span class="required">*</span></label>
+                    <input type="text" id="techSkillSearch" placeholder="Search skills..." class="search-input">
+                    <div class="multi-select scrollable" id="technicalSkillsSelect">
+                        <div class="multi-select-options open">
+                            <label><input type="checkbox" name="technicalSkills" value="Python"> Python</label>
+                            <label><input type="checkbox" name="technicalSkills" value="JavaScript"> JavaScript</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Java"> Java</label>
+                            <label><input type="checkbox" name="technicalSkills" value="C++"> C++</label>
+                            <label><input type="checkbox" name="technicalSkills" value="C#"> C#</label>
+                            <label><input type="checkbox" name="technicalSkills" value="React"> React</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Angular"> Angular</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Vue.js"> Vue.js</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Node.js"> Node.js</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Django"> Django</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Flask"> Flask</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Spring Boot"> Spring Boot</label>
+                            <label><input type="checkbox" name="technicalSkills" value="AWS"> AWS</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Azure"> Azure</label>
+                            <label><input type="checkbox" name="technicalSkills" value="GCP"> GCP</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Docker"> Docker</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Kubernetes"> Kubernetes</label>
+                            <label><input type="checkbox" name="technicalSkills" value="SQL"> SQL</label>
+                            <label><input type="checkbox" name="technicalSkills" value="MongoDB"> MongoDB</label>
+                            <label><input type="checkbox" name="technicalSkills" value="PostgreSQL"> PostgreSQL</label>
+                            <label><input type="checkbox" name="technicalSkills" value="MySQL"> MySQL</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Machine Learning"> Machine Learning</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Deep Learning"> Deep Learning</label>
+                            <label><input type="checkbox" name="technicalSkills" value="TensorFlow"> TensorFlow</label>
+                            <label><input type="checkbox" name="technicalSkills" value="PyTorch"> PyTorch</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Data Analysis"> Data Analysis</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Data Visualization"> Data Visualization</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Git"> Git</label>
+                            <label><input type="checkbox" name="technicalSkills" value="CI/CD"> CI/CD</label>
+                            <label><input type="checkbox" name="technicalSkills" value="REST API"> REST API</label>
+                            <label><input type="checkbox" name="technicalSkills" value="GraphQL"> GraphQL</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Linux"> Linux</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Bash"> Bash</label>
+                            <label><input type="checkbox" name="technicalSkills" value="HTML/CSS"> HTML/CSS</label>
+                            <label><input type="checkbox" name="technicalSkills" value="TypeScript"> TypeScript</label>
+                            <label><input type="checkbox" name="technicalSkills" value="PHP"> PHP</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Ruby"> Ruby</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Swift"> Swift</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Kotlin"> Kotlin</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Flutter"> Flutter</label>
+                            <label><input type="checkbox" name="technicalSkills" value="React Native"> React Native</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Blockchain"> Blockchain</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Cybersecurity"> Cybersecurity</label>
+                            <label><input type="checkbox" name="technicalSkills" value="DevOps"> DevOps</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Agile"> Agile</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Scrum"> Scrum</label>
+                            <label><input type="checkbox" name="technicalSkills" value="UI/UX Design"> UI/UX Design</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Figma"> Figma</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Adobe XD"> Adobe XD</label>
+                            <label><input type="checkbox" name="technicalSkills" value="Photoshop"> Photoshop</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="techProficiency">Technical Skill Proficiency Average (0-1) <span class="required">*</span></label>
+                    <input type="range" id="techProficiency" name="techProficiency" min="0" max="1" step="0.1" value="0.5">
+                    <span class="slider-value" id="techProficiencyValue">0.5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="softSkills">Soft Skills <span class="required">*</span></label>
+                    <div class="multi-select" id="softSkillsSelect">
+                        <div class="multi-select-header">
+                            <span class="multi-select-text">Select soft skills...</span>
+                            <span class="multi-select-arrow">▼</span>
+                        </div>
+                        <div class="multi-select-options">
+                            <label><input type="checkbox" name="softSkills" value="Communication"> Communication</label>
+                            <label><input type="checkbox" name="softSkills" value="Leadership"> Leadership</label>
+                            <label><input type="checkbox" name="softSkills" value="Teamwork"> Teamwork</label>
+                            <label><input type="checkbox" name="softSkills" value="Problem Solving"> Problem Solving</label>
+                            <label><input type="checkbox" name="softSkills" value="Critical Thinking"> Critical Thinking</label>
+                            <label><input type="checkbox" name="softSkills" value="Time Management"> Time Management</label>
+                            <label><input type="checkbox" name="softSkills" value="Adaptability"> Adaptability</label>
+                            <label><input type="checkbox" name="softSkills" value="Creativity"> Creativity</label>
+                            <label><input type="checkbox" name="softSkills" value="Collaboration"> Collaboration</label>
+                            <label><input type="checkbox" name="softSkills" value="Negotiation"> Negotiation</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="softProficiency">Soft Skill Proficiency Average (0-10) <span class="required">*</span></label>
+                    <input type="range" id="softProficiency" name="softProficiency" min="0" max="10" step="0.5" value="5">
+                    <span class="slider-value" id="softProficiencyValue">5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="skillEmbedding">Skill Embedding Text
+                        <span class="tooltip" data-tooltip="Auto-generated from your selected skills">?</span>
+                    </label>
+                    <textarea id="skillEmbedding" name="skillEmbedding" rows="3" readonly></textarea>
+                    <small class="field-note">Auto-generated based on selected skills</small>
+                </div>
+            </div>
+
+            <!-- Step 4: Learning & Development -->
+            <div class="form-step" data-step="4">
+                <h2 class="step-title">Learning & Development</h2>
+                <p class="step-description">Tell us about your learning journey</p>
+
+                <div class="form-group">
+                    <label for="coursesCompleted">Total Courses Completed <span class="required">*</span></label>
+                    <input type="number" id="coursesCompleted" name="coursesCompleted" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="courseDifficulty">Average Course Difficulty (1-5) <span class="required">*</span></label>
+                    <input type="range" id="courseDifficulty" name="courseDifficulty" min="1" max="5" step="1" value="3">
+                    <div class="difficulty-labels">
+                        <span>Beginner</span>
+                        <span>Intermediate</span>
+                        <span>Advanced</span>
+                    </div>
+                    <span class="slider-value" id="courseDifficultyValue">3</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="hoursLearning">Total Hours Spent Learning <span class="required">*</span></label>
+                    <input type="number" id="hoursLearning" name="hoursLearning" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="courseKeywords">Course Keywords
+                        <span class="tooltip" data-tooltip="List the names or topics of courses you've completed">?</span>
+                    </label>
+                    <textarea id="courseKeywords" name="courseKeywords" rows="4" placeholder="e.g., Machine Learning, Web Development, Data Structures..."></textarea>
+                    <small class="char-counter"><span id="courseKeywordsCount">0</span> characters</small>
+                </div>
+            </div>
+
+            <!-- Step 5: Projects -->
+            <div class="form-step" data-step="5">
+                <h2 class="step-title">Projects</h2>
+                <p class="step-description">Share your project experience</p>
+
+                <div class="form-group">
+                    <label for="projectCount">Project Count <span class="required">*</span></label>
+                    <input type="number" id="projectCount" name="projectCount" min="0" max="20" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectComplexity">Average Project Complexity (1-5) <span class="required">*</span></label>
+                    <input type="range" id="projectComplexity" name="projectComplexity" min="1" max="5" step="1" value="3">
+                    <div class="difficulty-labels">
+                        <span>Simple</span>
+                        <span>Moderate</span>
+                        <span>Complex</span>
+                    </div>
+                    <span class="slider-value" id="projectComplexityValue">3</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectKeywords">Project Keywords
+                        <span class="tooltip" data-tooltip="Describe your projects and technologies used">?</span>
+                    </label>
+                    <textarea id="projectKeywords" name="projectKeywords" rows="5" placeholder="Describe your projects, technologies used, and what you built..."></textarea>
+                    <small class="char-counter"><span id="projectKeywordsCount">0</span> characters</small>
+                </div>
+            </div>
+
+            <!-- Step 6: Work Experience -->
+            <div class="form-step" data-step="6">
+                <h2 class="step-title">Work Experience</h2>
+                <p class="step-description">Tell us about your professional experience</p>
+
+                <div class="form-group">
+                    <label for="experienceMonths">Total Experience (Months) <span class="required">*</span></label>
+                    <input type="number" id="experienceMonths" name="experienceMonths" min="0" max="120" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="experienceTypes">Experience Types <span class="required">*</span></label>
+                    <div class="multi-select" id="experienceTypesSelect">
+                        <div class="multi-select-header">
+                            <span class="multi-select-text">Select experience types...</span>
+                            <span class="multi-select-arrow">▼</span>
+                        </div>
+                        <div class="multi-select-options">
+                            <label><input type="checkbox" name="experienceTypes" value="internship"> Internship</label>
+                            <label><input type="checkbox" name="experienceTypes" value="freelance"> Freelance</label>
+                            <label><input type="checkbox" name="experienceTypes" value="fulltime"> Full-time</label>
+                            <label><input type="checkbox" name="experienceTypes" value="parttime"> Part-time</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobLevel">Job Level <span class="required">*</span></label>
+                    <select id="jobLevel" name="jobLevel" required>
+                        <option value="">Select Level</option>
+                        <option value="entry">Entry Level</option>
+                        <option value="mid">Mid Level</option>
+                        <option value="senior">Senior Level</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="workKeywords">Work Keywords
+                        <span class="tooltip" data-tooltip="Describe your roles, responsibilities, and achievements">?</span>
+                    </label>
+                    <textarea id="workKeywords" name="workKeywords" rows="5" placeholder="Describe your work experience, roles, and responsibilities..."></textarea>
+                    <small class="char-counter"><span id="workKeywordsCount">0</span> characters</small>
+                </div>
+            </div>
+
+            <!-- Step 7: Interests & Preferences -->
+            <div class="form-step" data-step="7">
+                <h2 class="step-title">Interests & Preferences</h2>
+                <p class="step-description">What are you passionate about?</p>
+
+                <div class="form-group">
+                    <label for="interestSTEM">Interest in STEM (0-1) <span class="required">*</span></label>
+                    <input type="range" id="interestSTEM" name="interestSTEM" min="0" max="1" step="0.1" value="0.5">
+                    <span class="slider-value" id="interestSTEMValue">0.5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestBusiness">Interest in Business (0-1) <span class="required">*</span></label>
+                    <input type="range" id="interestBusiness" name="interestBusiness" min="0" max="1" step="0.1" value="0.5">
+                    <span class="slider-value" id="interestBusinessValue">0.5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestArts">Interest in Arts (0-1) <span class="required">*</span></label>
+                    <input type="range" id="interestArts" name="interestArts" min="0" max="1" step="0.1" value="0.5">
+                    <span class="slider-value" id="interestArtsValue">0.5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestDesign">Interest in Design (0-1) <span class="required">*</span></label>
+                    <input type="range" id="interestDesign" name="interestDesign" min="0" max="1" step="0.1" value="0.5">
+                    <span class="slider-value" id="interestDesignValue">0.5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestMedical">Interest in Medical (0-1) <span class="required">*</span></label>
+                    <input type="range" id="interestMedical" name="interestMedical" min="0" max="1" step="0.1" value="0.5">
+                    <span class="slider-value" id="interestMedicalValue">0.5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestSocialScience">Interest in Social Science (0-1) <span class="required">*</span></label>
+                    <input type="range" id="interestSocialScience" name="interestSocialScience" min="0" max="1" step="0.1" value="0.5">
+                    <span class="slider-value" id="interestSocialScienceValue">0.5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="careerPreference">Career Preference <span class="required">*</span></label>
+                    <select id="careerPreference" name="careerPreference" required>
+                        <option value="">Select Preference</option>
+                        <option value="technical">Technical</option>
+                        <option value="business">Business</option>
+                        <option value="creative">Creative</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="workPreference">Work Preference <span class="required">*</span></label>
+                    <select id="workPreference" name="workPreference" required>
+                        <option value="">Select Preference</option>
+                        <option value="remote">Remote</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="office">Office</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferredIndustries">Preferred Industries <span class="required">*</span></label>
+                    <div class="multi-select" id="preferredIndustriesSelect">
+                        <div class="multi-select-header">
+                            <span class="multi-select-text">Select industries...</span>
+                            <span class="multi-select-arrow">▼</span>
+                        </div>
+                        <div class="multi-select-options">
+                            <label><input type="checkbox" name="preferredIndustries" value="Technology"> Technology</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="FinTech"> FinTech</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="Healthcare"> Healthcare</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="E-commerce"> E-commerce</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="Education"> Education</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="Entertainment"> Entertainment</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="Consulting"> Consulting</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="Manufacturing"> Manufacturing</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="Retail"> Retail</label>
+                            <label><input type="checkbox" name="preferredIndustries" value="Government"> Government</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferredRoles">Preferred Roles <span class="required">*</span></label>
+                    <div class="multi-select" id="preferredRolesSelect">
+                        <div class="multi-select-header">
+                            <span class="multi-select-text">Select roles...</span>
+                            <span class="multi-select-arrow">▼</span>
+                        </div>
+                        <div class="multi-select-options">
+                            <label><input type="checkbox" name="preferredRoles" value="Software Engineer"> Software Engineer</label>
+                            <label><input type="checkbox" name="preferredRoles" value="Data Scientist"> Data Scientist</label>
+                            <label><input type="checkbox" name="preferredRoles" value="Product Manager"> Product Manager</label>
+                            <label><input type="checkbox" name="preferredRoles" value="UX Designer"> UX Designer</label>
+                            <label><input type="checkbox" name="preferredRoles" value="Business Analyst"> Business Analyst</label>
+                            <label><input type="checkbox" name="preferredRoles" value="DevOps Engineer"> DevOps Engineer</label>
+                            <label><input type="checkbox" name="preferredRoles" value="Marketing Manager"> Marketing Manager</label>
+                            <label><input type="checkbox" name="preferredRoles" value="HR Manager"> HR Manager</label>
+                            <label><input type="checkbox" name="preferredRoles" value="Financial Analyst"> Financial Analyst</label>
+                            <label><input type="checkbox" name="preferredRoles" value="Project Manager"> Project Manager</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8: Personality Assessment -->
+            <div class="form-step" data-step="8">
+                <h2 class="step-title">Personality Assessment</h2>
+                <p class="step-description">Big Five Personality Traits</p>
+
+                <div class="form-group">
+                    <label for="conscientiousness">Conscientiousness (1-5) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="How organized, dependable, and disciplined you are">?</span>
+                    </label>
+                    <input type="range" id="conscientiousness" name="conscientiousness" min="1" max="5" step="1" value="3">
+                    <div class="personality-labels">
+                        <span>Spontaneous</span>
+                        <span>Organized</span>
+                    </div>
+                    <span class="slider-value" id="conscientiousnessValue">3</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="extraversion">Extraversion (1-5) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="How outgoing, energetic, and sociable you are">?</span>
+                    </label>
+                    <input type="range" id="extraversion" name="extraversion" min="1" max="5" step="1" value="3">
+                    <div class="personality-labels">
+                        <span>Introverted</span>
+                        <span>Extraverted</span>
+                    </div>
+                    <span class="slider-value" id="extraversionValue">3</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="openness">Openness (1-5) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="How open you are to new experiences and ideas">?</span>
+                    </label>
+                    <input type="range" id="openness" name="openness" min="1" max="5" step="1" value="3">
+                    <div class="personality-labels">
+                        <span>Practical</span>
+                        <span>Imaginative</span>
+                    </div>
+                    <span class="slider-value" id="opennessValue">3</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="agreeableness">Agreeableness (1-5) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="How cooperative, compassionate, and friendly you are">?</span>
+                    </label>
+                    <input type="range" id="agreeableness" name="agreeableness" min="1" max="5" step="1" value="3">
+                    <div class="personality-labels">
+                        <span>Competitive</span>
+                        <span>Cooperative</span>
+                    </div>
+                    <span class="slider-value" id="agreeablenessValue">3</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="emotionalStability">Emotional Stability (1-5) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="How emotionally stable and resilient you are">?</span>
+                    </label>
+                    <input type="range" id="emotionalStability" name="emotionalStability" min="1" max="5" step="1" value="3">
+                    <div class="personality-labels">
+                        <span>Sensitive</span>
+                        <span>Stable</span>
+                    </div>
+                    <span class="slider-value" id="emotionalStabilityValue">3</span>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="form-navigation">
+                <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                    ← Previous
+                </button>
+                <button type="button" class="btn btn-primary" id="nextBtn">
+                    Next →
+                </button>
+                <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                    Submit Form
+                </button>
+            </div>
+        </form>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button type="button" class="btn btn-outline" id="clearBtn">
+                Clear Form
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p>Submitting your data...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success">
+            <div class="success-icon">✓</div>
+            <h2>Success!</h2>
+            <p>Your data has been submitted successfully.</p>
+            <button class="btn btn-primary" onclick="closeSuccessModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content error">
+            <div class="error-icon">✕</div>
+            <h2>Error</h2>
+            <p id="errorMessage">Something went wrong. Please try again.</p>
+            <button class="btn btn-primary" onclick="closeErrorModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
