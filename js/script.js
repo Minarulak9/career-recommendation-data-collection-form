@@ -3,7 +3,7 @@ let currentStep = 1;
 const totalSteps = 8;
 
 // Google Apps Script Web App URL (Replace with your deployed URL)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyLeuR3E_WfOW_1UdN-ZebNhHwqeBXasMxpnn9n5m1pHRZlC1EIMhM29od6ZAPB0CeH/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-OiDroxF-q1sJKbJnFHqdJh9h8dx7RL_igGlRiLUYggr7LCeOafiasgc9DhAr2B__/exec';
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -19,7 +19,7 @@ function initializeForm() {
     setupMultiSelect();
     setupSliders();
     setupCharCounters();
-    setupTechnicalSkillSearch();
+    setupSearchableMultiSelect();
 }
 
 // Setup Event Listeners
@@ -36,7 +36,7 @@ function setupEventListeners() {
     document.getElementById('careerForm').addEventListener('input', debounce(saveToLocalStorage, 500));
     
     // Calculate academic consistency when grades change
-    ['class10', 'class12', 'ugCGPA', 'pgCGPA'].forEach(id => {
+    ['class10', 'class12', 'ugCGPA', 'gradCGPA', 'pgCGPA'].forEach(id => {
         const element = document.getElementById(id);
         if (element) {
             element.addEventListener('input', calculateAcademicConsistency);
@@ -98,6 +98,47 @@ function updateMultiSelectText(selectElement) {
     }
 }
 
+// Setup Searchable Multi-Select
+function setupSearchableMultiSelect() {
+    // Technical Skills Search
+    setupSearch('techSkillSearch', 'technicalSkillsSelect');
+    
+    // Experience Types Search
+    setupSearch('experienceTypesSearch', 'experienceTypesSelect');
+    
+    // Work Preference Search
+    setupSearch('workPreferenceSearch', 'workPreferenceSelect');
+    
+    // Preferred Industries Search
+    setupSearch('preferredIndustriesSearch', 'preferredIndustriesSelect');
+    
+    // Preferred Roles Search
+    setupSearch('preferredRolesSearch', 'preferredRolesSelect');
+}
+
+// Setup Search Functionality
+function setupSearch(searchInputId, containerSelectId) {
+    const searchInput = document.getElementById(searchInputId);
+    const skillsContainer = document.getElementById(containerSelectId);
+    
+    if (!searchInput || !skillsContainer) return;
+    
+    const allLabels = skillsContainer.querySelectorAll('label');
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        
+        allLabels.forEach(label => {
+            const skillName = label.textContent.toLowerCase();
+            if (skillName.includes(searchTerm)) {
+                label.style.display = 'block';
+            } else {
+                label.style.display = 'none';
+            }
+        });
+    });
+}
+
 // Setup Range Sliders
 function setupSliders() {
     const sliders = [
@@ -138,28 +179,6 @@ function setupCharCounters() {
             });
         }
     });
-}
-
-// Setup Technical Skill Search
-function setupTechnicalSkillSearch() {
-    const searchInput = document.getElementById('techSkillSearch');
-    const skillsContainer = document.getElementById('technicalSkillsSelect');
-    const allLabels = skillsContainer.querySelectorAll('label');
-    
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            
-            allLabels.forEach(label => {
-                const skillName = label.textContent.toLowerCase();
-                if (skillName.includes(searchTerm)) {
-                    label.style.display = 'block';
-                } else {
-                    label.style.display = 'none';
-                }
-            });
-        });
-    }
 }
 
 // Navigation Functions
@@ -267,6 +286,7 @@ function calculateAcademicConsistency() {
     const class10 = parseFloat(document.getElementById('class10').value) || 0;
     const class12 = parseFloat(document.getElementById('class12').value) || 0;
     const ugCGPA = parseFloat(document.getElementById('ugCGPA').value) || 0;
+    const gradCGPA = parseFloat(document.getElementById('gradCGPA').value) || 0;
     const pgCGPA = parseFloat(document.getElementById('pgCGPA').value) || 0;
     
     // Normalize scores to 0-1 scale
@@ -274,6 +294,7 @@ function calculateAcademicConsistency() {
         class10 / 100,
         class12 / 100,
         ugCGPA > 0 ? ugCGPA / 10 : null,
+        gradCGPA > 0 ? gradCGPA / 10 : null,
         pgCGPA > 0 ? pgCGPA / 10 : null
     ].filter(score => score !== null && score > 0);
     
@@ -378,6 +399,8 @@ function collectFormData() {
         class12_stream: document.getElementById('class12Stream').value,
         ug_major: document.getElementById('ugMajor').value || '',
         ug_cgpa: parseFloat(document.getElementById('ugCGPA').value) || 0,
+        grad_major: document.getElementById('gradMajor').value || '',
+        grad_cgpa: parseFloat(document.getElementById('gradCGPA').value) || 0,
         pg_major: document.getElementById('pgMajor').value || '',
         pg_cgpa: parseFloat(document.getElementById('pgCGPA').value) || 0,
         highest_education: document.getElementById('highestEducation').value,

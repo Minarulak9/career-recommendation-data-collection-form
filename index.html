@@ -112,8 +112,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="gradMajor">Graduate Major</label>
+                    <input type="text" id="gradMajor" name="gradMajor" placeholder="e.g., MSc Computer Science, MTech">
+                </div>
+
+                <div class="form-group">
+                    <label for="gradCGPA">Graduate CGPA</label>
+                    <input type="number" id="gradCGPA" name="gradCGPA" min="0" max="10" step="0.01">
+                </div>
+
+                <div class="form-group">
                     <label for="pgMajor">Postgraduate/Masters Major</label>
-                    <input type="text" id="pgMajor" name="pgMajor" placeholder="e.g., MBA, MSc Computer Science">
+                    <input type="text" id="pgMajor" name="pgMajor" placeholder="e.g., MBA, MSc">
                 </div>
 
                 <div class="form-group">
@@ -127,14 +137,26 @@
                         <option value="">Select Level</option>
                         <option value="Diploma">Diploma</option>
                         <option value="BTech">BTech</option>
+                        <option value="BE">BE (Bachelor of Engineering)</option>
+                        <option value="BSc">BSc (Bachelor of Science)</option>
+                        <option value="BCA">BCA (Bachelor of Computer Applications)</option>
+                        <option value="BA">BA (Bachelor of Arts)</option>
+                        <option value="BCom">BCom (Bachelor of Commerce)</option>
                         <option value="MTech">MTech</option>
+                        <option value="ME">ME (Master of Engineering)</option>
+                        <option value="MSc">MSc (Master of Science)</option>
+                        <option value="MCA">MCA (Master of Computer Applications)</option>
+                        <option value="MA">MA (Master of Arts)</option>
+                        <option value="MCom">MCom (Master of Commerce)</option>
                         <option value="MBA">MBA</option>
                         <option value="PhD">PhD</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="standardizedTest">Standardized Test Score (0-100)</label>
+                    <label for="standardizedTest">Standardized Test Score (0-100)
+                        <span class="tooltip" data-tooltip="Score from standardized tests like GRE, GMAT, CAT, GATE, etc. Leave blank if not applicable">?</span>
+                    </label>
                     <input type="number" id="standardizedTest" name="standardizedTest" min="0" max="100" step="0.01">
                 </div>
 
@@ -466,12 +488,9 @@
 
                 <div class="form-group">
                     <label for="experienceTypes">Experience Types <span class="required">*</span></label>
-                    <div class="multi-select" id="experienceTypesSelect">
-                        <div class="multi-select-header">
-                            <span class="multi-select-text">Select experience types...</span>
-                            <span class="multi-select-arrow">▼</span>
-                        </div>
-                        <div class="multi-select-options">
+                    <input type="text" id="experienceTypesSearch" placeholder="Search experience types..." class="search-input">
+                    <div class="multi-select scrollable" id="experienceTypesSelect">
+                        <div class="multi-select-options open">
                             <label><input type="checkbox" name="experienceTypes" value="internship"> Internship</label>
                             <label><input type="checkbox" name="experienceTypes" value="freelance"> Freelance</label>
                             <label><input type="checkbox" name="experienceTypes" value="fulltime"> Full-time</label>
@@ -505,37 +524,49 @@
                 <p class="step-description">What are you passionate about?</p>
 
                 <div class="form-group">
-                    <label for="interestSTEM">Interest in STEM (0-1) <span class="required">*</span></label>
+                    <label for="interestSTEM">Interest in STEM (0-1) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="Science, Technology, Engineering, and Mathematics - Rate your interest level from 0 (no interest) to 1 (very high interest)">?</span>
+                    </label>
                     <input type="range" id="interestSTEM" name="interestSTEM" min="0" max="1" step="0.1" value="0.5">
                     <span class="slider-value" id="interestSTEMValue">0.5</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="interestBusiness">Interest in Business (0-1) <span class="required">*</span></label>
+                    <label for="interestBusiness">Interest in Business (0-1) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="Business, Management, and Entrepreneurship - Rate your interest level from 0 (no interest) to 1 (very high interest)">?</span>
+                    </label>
                     <input type="range" id="interestBusiness" name="interestBusiness" min="0" max="1" step="0.1" value="0.5">
                     <span class="slider-value" id="interestBusinessValue">0.5</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="interestArts">Interest in Arts (0-1) <span class="required">*</span></label>
+                    <label for="interestArts">Interest in Arts (0-1) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="Visual Arts, Performing Arts, and Creative Fields - Rate your interest level from 0 (no interest) to 1 (very high interest)">?</span>
+                    </label>
                     <input type="range" id="interestArts" name="interestArts" min="0" max="1" step="0.1" value="0.5">
                     <span class="slider-value" id="interestArtsValue">0.5</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="interestDesign">Interest in Design (0-1) <span class="required">*</span></label>
+                    <label for="interestDesign">Interest in Design (0-1) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="UI/UX Design, Graphic Design, Product Design - Rate your interest level from 0 (no interest) to 1 (very high interest)">?</span>
+                    </label>
                     <input type="range" id="interestDesign" name="interestDesign" min="0" max="1" step="0.1" value="0.5">
                     <span class="slider-value" id="interestDesignValue">0.5</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="interestMedical">Interest in Medical (0-1) <span class="required">*</span></label>
+                    <label for="interestMedical">Interest in Medical (0-1) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="Healthcare, Medicine, and Life Sciences - Rate your interest level from 0 (no interest) to 1 (very high interest)">?</span>
+                    </label>
                     <input type="range" id="interestMedical" name="interestMedical" min="0" max="1" step="0.1" value="0.5">
                     <span class="slider-value" id="interestMedicalValue">0.5</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="interestSocialScience">Interest in Social Science (0-1) <span class="required">*</span></label>
+                    <label for="interestSocialScience">Interest in Social Science (0-1) <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="Psychology, Sociology, Political Science - Rate your interest level from 0 (no interest) to 1 (very high interest)">?</span>
+                    </label>
                     <input type="range" id="interestSocialScience" name="interestSocialScience" min="0" max="1" step="0.1" value="0.5">
                     <span class="slider-value" id="interestSocialScienceValue">0.5</span>
                 </div>
@@ -553,12 +584,9 @@
 
                 <div class="form-group">
                     <label for="workPreference">Work Preference <span class="required">*</span></label>
-                    <div class="multi-select" id="workPreferenceSelect">
-                        <div class="multi-select-header">
-                            <span class="multi-select-text">Select work preferences...</span>
-                            <span class="multi-select-arrow">▼</span>
-                        </div>
-                        <div class="multi-select-options">
+                    <input type="text" id="workPreferenceSearch" placeholder="Search work preferences..." class="search-input">
+                    <div class="multi-select scrollable" id="workPreferenceSelect">
+                        <div class="multi-select-options open">
                             <label><input type="checkbox" name="workPreference" value="remote"> Remote</label>
                             <label><input type="checkbox" name="workPreference" value="hybrid"> Hybrid</label>
                             <label><input type="checkbox" name="workPreference" value="office"> Office</label>
@@ -569,12 +597,9 @@
 
                 <div class="form-group">
                     <label for="preferredIndustries">Preferred Industries <span class="required">*</span></label>
-                    <div class="multi-select" id="preferredIndustriesSelect">
-                        <div class="multi-select-header">
-                            <span class="multi-select-text">Select industries...</span>
-                            <span class="multi-select-arrow">▼</span>
-                        </div>
-                        <div class="multi-select-options">
+                    <input type="text" id="preferredIndustriesSearch" placeholder="Search industries..." class="search-input">
+                    <div class="multi-select scrollable" id="preferredIndustriesSelect">
+                        <div class="multi-select-options open">
                             <label><input type="checkbox" name="preferredIndustries" value="Technology"> Technology</label>
                             <label><input type="checkbox" name="preferredIndustries" value="FinTech"> FinTech</label>
                             <label><input type="checkbox" name="preferredIndustries" value="Banking & Finance"> Banking & Finance</label>
@@ -621,12 +646,9 @@
 
                 <div class="form-group">
                     <label for="preferredRoles">Preferred Roles <span class="required">*</span></label>
-                    <div class="multi-select" id="preferredRolesSelect">
-                        <div class="multi-select-header">
-                            <span class="multi-select-text">Select roles...</span>
-                            <span class="multi-select-arrow">▼</span>
-                        </div>
-                        <div class="multi-select-options">
+                    <input type="text" id="preferredRolesSearch" placeholder="Search roles..." class="search-input">
+                    <div class="multi-select scrollable" id="preferredRolesSelect">
+                        <div class="multi-select-options open">
                             <label><input type="checkbox" name="preferredRoles" value="Software Engineer"> Software Engineer</label>
                             <label><input type="checkbox" name="preferredRoles" value="Frontend Developer"> Frontend Developer</label>
                             <label><input type="checkbox" name="preferredRoles" value="Backend Developer"> Backend Developer</label>
@@ -784,7 +806,10 @@
         <div class="modal-content success">
             <div class="success-icon">✓</div>
             <h2>Success!</h2>
-            <p>Your data has been submitted successfully.</p>
+            <!-- <p>Your data has been submitted successfully.</p> -->
+            <p>
+                <small>Thank you for contributing your data. We appreciate your support.</small>
+            </p>
             <button class="btn btn-primary" onclick="closeSuccessModal()">Close</button>
         </div>
     </div>
