@@ -3,7 +3,7 @@ let currentStep = 1;
 const totalSteps = 8;
 
 // Google Apps Script Web App URL (Replace with your deployed URL)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyrQa4J7rebGDu2uRmoCLS4Frho6bHvEmJWSm6YfugwqiHu9UYQtEd8WDjh6irslohp/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxI6wKAJXQiB4JufufrZ5h0Bd5lnJ1KNFONeUTewuOlWsj-3SuSKlY3QDzCsaKK4BUD/exec';
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -129,22 +129,35 @@ function setupSearchableMultiSelect() {
 function handleCurrentStatusChange() {
     const currentStatus = document.getElementById('currentStatus').value;
     const currentJobRoleGroup = document.getElementById('currentJobRoleGroup');
+    const careerGoal = document.getElementById('careerGoalGroup');
     const currentJobRoleRadios = document.querySelectorAll('input[name="currentJobRole"]');
+    const careerGoalRadios = document.querySelectorAll('input[name="careerGoal"]');
     
     if (currentStatus === 'working') {
         currentJobRoleGroup.style.display = 'block';
+        careerGoal.style.display = 'none';
         // Make job role required when working
         currentJobRoleRadios.forEach(radio => {
             radio.setAttribute('data-conditionally-required', 'true');
         });
+        careerGoalRadios.forEach(radio => {
+            radio.removeAttribute('data-conditionally-required');
+            radio.checked = false;
+        });
     } else {
         currentJobRoleGroup.style.display = 'none';
+        careerGoal.style.display = 'block';
         // Remove required when student
         currentJobRoleRadios.forEach(radio => {
             radio.removeAttribute('data-conditionally-required');
             radio.checked = false;
         });
+        careerGoalRadios.forEach(radio => {
+            radio.setAttribute('data-conditionally-required', 'true');
+        });
+
     }
+
 }
 
 // Setup Search Functionality
@@ -509,7 +522,7 @@ function collectFormData() {
         
         // Current Status and Job Role (Label for dataset)
         current_status: document.getElementById('currentStatus').value || '',
-        current_job_role: document.getElementById('currentStatus').value === 'student' ? 'Student' : getSelectedRadioValue('currentJobRole')
+        current_job_role: document.getElementById('currentStatus').value === 'student' ? getSelectedRadioValue('careerGoal') : getSelectedRadioValue('currentJobRole')
     };
     
     return formData;

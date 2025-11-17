@@ -938,6 +938,227 @@
                     </select>
                 </div>
 
+                <div class="form-group" id="careerGoalGroup" style="display: none;">
+                    <label for="careerGoal">Your TARGET Career Goal <span class="required">*</span>
+                        <span class="tooltip" data-tooltip="Select Your TARGET Career Goal from the list">?</span>
+                    </label>
+                    <input type="text" id="careerGoalSearch" placeholder="Search job roles..." class="search-input">
+                    <div class="multi-select scrollable single-select" id="careerGoalSelect">
+                        <div class="multi-select-options open">
+                            <!-- BASIC TECH ROLES -->
+                            <label><input type="radio" name="careerGoal" value="Web Developer"> Web Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Front-End Engineer"> Front-End Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Back-End Engineer"> Back-End Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Software Architect"> Software Architect</label>
+                            <label><input type="radio" name="careerGoal" value="Front-End Architect"> Front-End Architect</label>
+                            <label><input type="radio" name="careerGoal" value="Back-End Architect"> Back-End Architect</label>
+                            <label><input type="radio" name="careerGoal" value="API Developer"> API Developer</label>
+                            <label><input type="radio" name="careerGoal" value="WordPress Developer"> WordPress Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Shopify Developer"> Shopify Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Wix Developer"> Wix Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Embedded Systems Engineer"> Embedded Systems Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Firmware Engineer"> Firmware Engineer</label>
+
+                            <!-- CLOUD + DEVOPS + PLATFORM -->
+                            <label><input type="radio" name="careerGoal" value="Cloud Engineer"> Cloud Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Cloud Security Engineer"> Cloud Security Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Platform Engineer"> Platform Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Infrastructure Engineer"> Infrastructure Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Release Engineer"> Release Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Build Engineer"> Build Engineer</label>
+
+                            <!-- AI + DATA + SECURITY -->
+                            <label><input type="radio" name="careerGoal" value="AI Engineer"> AI Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Deep Learning Engineer"> Deep Learning Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="NLP Engineer"> NLP Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Computer Vision Engineer"> Computer Vision Engineer</label>
+
+                            <!-- CYBERSECURITY -->
+                            <label><input type="radio" name="careerGoal" value="Penetration Tester"> Penetration Tester</label>
+                            <label><input type="radio" name="careerGoal" value="Ethical Hacker"> Ethical Hacker</label>
+                            <label><input type="radio" name="careerGoal" value="SOC Analyst"> SOC Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Security Architect"> Security Architect</label>
+                            <label><input type="radio" name="careerGoal" value="Application Security Engineer"> Application Security Engineer</label>
+
+                            <!-- QA & TESTING -->
+                            <label><input type="radio" name="careerGoal" value="QA Automation Engineer"> QA Automation Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Automation Test Engineer"> Automation Test Engineer</label>
+
+                            <!-- PRODUCT + MANAGEMENT -->
+                            <label><input type="radio" name="careerGoal" value="Product Owner"> Product Owner</label>
+                            <label><input type="radio" name="careerGoal" value="Delivery Manager"> Delivery Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Operations Analyst"> Operations Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Business Operations Manager"> Business Operations Manager</label>
+
+                            <!-- DESIGN / CREATIVE -->
+                            <label><input type="radio" name="careerGoal" value="UX Researcher"> UX Researcher</label>
+                            <label><input type="radio" name="careerGoal" value="Art Director"> Art Director</label>
+                            <label><input type="radio" name="careerGoal" value="Creative Director"> Creative Director</label>
+                            <label><input type="radio" name="careerGoal" value="Content Creator"> Content Creator</label>
+                            <label><input type="radio" name="careerGoal" value="Script Writer"> Script Writer</label>
+                            <label><input type="radio" name="careerGoal" value="Podcast Producer"> Podcast Producer</label>
+                            <label><input type="radio" name="careerGoal" value="Influencer Manager"> Influencer Manager</label>
+
+                            <!-- EDUCATION -->
+                            <label><input type="radio" name="careerGoal" value="Teaching Assistant"> Teaching Assistant</label>
+                            <label><input type="radio" name="careerGoal" value="Academic Researcher"> Academic Researcher</label>
+                            <label><input type="radio" name="careerGoal" value="Curriculum Developer"> Curriculum Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Corporate Trainer"> Corporate Trainer</label>
+
+                            <!-- HEALTHCARE -->
+                            <label><input type="radio" name="careerGoal" value="Nurse"> Nurse</label>
+                            <label><input type="radio" name="careerGoal" value="Doctor"> Doctor</label>
+                            <label><input type="radio" name="careerGoal" value="Lab Assistant"> Lab Assistant</label>
+                            <label><input type="radio" name="careerGoal" value="Physiotherapist"> Physiotherapist</label>
+                            <label><input type="radio" name="careerGoal" value="Nutritionist"> Nutritionist</label>
+
+                            <!-- CONSTRUCTION / REAL ESTATE -->
+                            <label><input type="radio" name="careerGoal" value="Structural Engineer"> Structural Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Site Engineer"> Site Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Quantity Surveyor"> Quantity Surveyor</label>
+                            <label><input type="radio" name="careerGoal" value="Software Engineer"> Software Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Frontend Developer"> Frontend Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Backend Developer"> Backend Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Full Stack Developer"> Full Stack Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Mobile Developer"> Mobile Developer</label>
+                            <label><input type="radio" name="careerGoal" value="DevOps Engineer"> DevOps Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Data Scientist"> Data Scientist</label>
+                            <label><input type="radio" name="careerGoal" value="Data Analyst"> Data Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Data Engineer"> Data Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Machine Learning Engineer"> Machine Learning Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="AI Research Scientist"> AI Research Scientist</label>
+                            <label><input type="radio" name="careerGoal" value="Product Manager"> Product Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Technical Product Manager"> Technical Product Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Project Manager"> Project Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Program Manager"> Program Manager</label>
+                            <label><input type="radio" name="careerGoal" value="UX Designer"> UX Designer</label>
+                            <label><input type="radio" name="careerGoal" value="UI Designer"> UI Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Product Designer"> Product Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Graphic Designer"> Graphic Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Business Analyst"> Business Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Systems Analyst"> Systems Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Quality Assurance Engineer"> Quality Assurance Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Test Engineer"> Test Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Cloud Architect"> Cloud Architect</label>
+                            <label><input type="radio" name="careerGoal" value="Solutions Architect"> Solutions Architect</label>
+                            <label><input type="radio" name="careerGoal" value="Security Engineer"> Security Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Cybersecurity Analyst"> Cybersecurity Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Network Engineer"> Network Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Database Administrator"> Database Administrator</label>
+                            <label><input type="radio" name="careerGoal" value="System Administrator"> System Administrator</label>
+                            <label><input type="radio" name="careerGoal" value="Site Reliability Engineer"> Site Reliability Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Marketing Manager"> Marketing Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Digital Marketing Specialist"> Digital Marketing Specialist</label>
+                            <label><input type="radio" name="careerGoal" value="SEO Specialist"> SEO Specialist</label>
+                            <label><input type="radio" name="careerGoal" value="Social Media Manager"> Social Media Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Content Strategist"> Content Strategist</label>
+                            <label><input type="radio" name="careerGoal" value="Content Writer"> Content Writer</label>
+                            <label><input type="radio" name="careerGoal" value="Technical Writer"> Technical Writer</label>
+                            <label><input type="radio" name="careerGoal" value="Copywriter"> Copywriter</label>
+                            <label><input type="radio" name="careerGoal" value="Sales Manager"> Sales Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Sales Executive"> Sales Executive</label>
+                            <label><input type="radio" name="careerGoal" value="Account Manager"> Account Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Customer Success Manager"> Customer Success Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Customer Support Specialist"> Customer Support Specialist</label>
+                            <label><input type="radio" name="careerGoal" value="HR Manager"> HR Manager</label>
+                            <label><input type="radio" name="careerGoal" value="HR Business Partner"> HR Business Partner</label>
+                            <label><input type="radio" name="careerGoal" value="Recruiter"> Recruiter</label>
+                            <label><input type="radio" name="careerGoal" value="Talent Acquisition Specialist"> Talent Acquisition Specialist</label>
+                            <label><input type="radio" name="careerGoal" value="Financial Analyst"> Financial Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Investment Analyst"> Investment Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Accountant"> Accountant</label>
+                            <label><input type="radio" name="careerGoal" value="Tax Consultant"> Tax Consultant</label>
+                            <label><input type="radio" name="careerGoal" value="Auditor"> Auditor</label>
+                            <label><input type="radio" name="careerGoal" value="Management Consultant"> Management Consultant</label>
+                            <label><input type="radio" name="careerGoal" value="Strategy Consultant"> Strategy Consultant</label>
+                            <label><input type="radio" name="careerGoal" value="IT Consultant"> IT Consultant</label>
+                            <label><input type="radio" name="careerGoal" value="Research Scientist"> Research Scientist</label>
+                            <label><input type="radio" name="careerGoal" value="Researcher"> Researcher</label>
+                            <label><input type="radio" name="careerGoal" value="Lab Technician"> Lab Technician</label>
+                            <label><input type="radio" name="careerGoal" value="Operations Manager"> Operations Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Supply Chain Manager"> Supply Chain Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Logistics Coordinator"> Logistics Coordinator</label>
+                            <label><input type="radio" name="careerGoal" value="Procurement Manager"> Procurement Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Scrum Master"> Scrum Master</label>
+                            <label><input type="radio" name="careerGoal" value="Agile Coach"> Agile Coach</label>
+                            <label><input type="radio" name="careerGoal" value="Business Development Manager"> Business Development Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Partnership Manager"> Partnership Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Legal Advisor"> Legal Advisor</label>
+                            <label><input type="radio" name="careerGoal" value="Lawyer"> Lawyer</label>
+                            <label><input type="radio" name="careerGoal" value="Compliance Officer"> Compliance Officer</label>
+                            <label><input type="radio" name="careerGoal" value="Risk Analyst"> Risk Analyst</label>
+                            <label><input type="radio" name="careerGoal" value="Insurance Agent"> Insurance Agent</label>
+                            <label><input type="radio" name="careerGoal" value="Real Estate Agent"> Real Estate Agent</label>
+                            <label><input type="radio" name="careerGoal" value="Property Manager"> Property Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Civil Engineer"> Civil Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Mechanical Engineer"> Mechanical Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Electrical Engineer"> Electrical Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Chemical Engineer"> Chemical Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Biomedical Engineer"> Biomedical Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Aerospace Engineer"> Aerospace Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Environmental Engineer"> Environmental Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Industrial Engineer"> Industrial Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Manufacturing Engineer"> Manufacturing Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Production Manager"> Production Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Quality Control Manager"> Quality Control Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Game Developer"> Game Developer</label>
+                            <label><input type="radio" name="careerGoal" value="Game Designer"> Game Designer</label>
+                            <label><input type="radio" name="careerGoal" value="3D Artist"> 3D Artist</label>
+                            <label><input type="radio" name="careerGoal" value="Animator"> Animator</label>
+                            <label><input type="radio" name="careerGoal" value="Video Editor"> Video Editor</label>
+                            <label><input type="radio" name="careerGoal" value="Motion Graphics Designer"> Motion Graphics Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Sound Engineer"> Sound Engineer</label>
+                            <label><input type="radio" name="careerGoal" value="Music Producer"> Music Producer</label>
+                            <label><input type="radio" name="careerGoal" value="Photographer"> Photographer</label>
+                            <label><input type="radio" name="careerGoal" value="Videographer"> Videographer</label>
+                            <label><input type="radio" name="careerGoal" value="Journalist"> Journalist</label>
+                            <label><input type="radio" name="careerGoal" value="Editor"> Editor</label>
+                            <label><input type="radio" name="careerGoal" value="Publisher"> Publisher</label>
+                            <label><input type="radio" name="careerGoal" value="Teacher"> Teacher</label>
+                            <label><input type="radio" name="careerGoal" value="Professor"> Professor</label>
+                            <label><input type="radio" name="careerGoal" value="Lecturer"> Lecturer</label>
+                            <label><input type="radio" name="careerGoal" value="Education Counselor"> Education Counselor</label>
+                            <label><input type="radio" name="careerGoal" value="Training Specialist"> Training Specialist</label>
+                            <label><input type="radio" name="careerGoal" value="Instructional Designer"> Instructional Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Healthcare Administrator"> Healthcare Administrator</label>
+                            <label><input type="radio" name="careerGoal" value="Medical Representative"> Medical Representative</label>
+                            <label><input type="radio" name="careerGoal" value="Pharmacist"> Pharmacist</label>
+                            <label><input type="radio" name="careerGoal" value="Clinical Research Coordinator"> Clinical Research Coordinator</label>
+                            <label><input type="radio" name="careerGoal" value="Biotechnology Specialist"> Biotechnology Specialist</label>
+                            <label><input type="radio" name="careerGoal" value="Chef"> Chef</label>
+                            <label><input type="radio" name="careerGoal" value="Restaurant Manager"> Restaurant Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Hotel Manager"> Hotel Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Event Planner"> Event Planner</label>
+                            <label><input type="radio" name="careerGoal" value="Travel Consultant"> Travel Consultant</label>
+                            <label><input type="radio" name="careerGoal" value="Tour Guide"> Tour Guide</label>
+                            <label><input type="radio" name="careerGoal" value="Fashion Designer"> Fashion Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Textile Designer"> Textile Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Merchandiser"> Merchandiser</label>
+                            <label><input type="radio" name="careerGoal" value="Retail Manager"> Retail Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Store Manager"> Store Manager</label>
+                            <label><input type="radio" name="careerGoal" value="E-commerce Manager"> E-commerce Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Brand Manager"> Brand Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Public Relations Specialist"> Public Relations Specialist</label>
+                            <label><input type="radio" name="careerGoal" value="Communications Manager"> Communications Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Community Manager"> Community Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Architect"> Architect</label>
+                            <label><input type="radio" name="careerGoal" value="Interior Designer"> Interior Designer</label>
+                            <label><input type="radio" name="careerGoal" value="Urban Planner"> Urban Planner</label>
+                            <label><input type="radio" name="careerGoal" value="Landscape Architect"> Landscape Architect</label>
+                            <label><input type="radio" name="careerGoal" value="Construction Manager"> Construction Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Project Coordinator"> Project Coordinator</label>
+                            <label><input type="radio" name="careerGoal" value="Administrative Assistant"> Administrative Assistant</label>
+                            <label><input type="radio" name="careerGoal" value="Executive Assistant"> Executive Assistant</label>
+                            <label><input type="radio" name="careerGoal" value="Office Manager"> Office Manager</label>
+                            <label><input type="radio" name="careerGoal" value="Receptionist"> Receptionist</label>
+                            <label><input type="radio" name="careerGoal" value="Entrepreneur"> Entrepreneur</label>
+                            <label><input type="radio" name="careerGoal" value="Startup Founder"> Startup Founder</label>
+                            <label><input type="radio" name="careerGoal" value="Freelancer"> Freelancer</label>
+                            <label><input type="radio" name="careerGoal" value="Consultant"> Consultant</label>
+                            <label><input type="radio" name="careerGoal" value="Other"> Other</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group" id="currentJobRoleGroup" style="display: none;">
                     <label for="currentJobRole">Current Job Role <span class="required">*</span>
                         <span class="tooltip" data-tooltip="Select your current job role from the list">?</span>
