@@ -3,7 +3,7 @@ let currentStep = 1;
 const totalSteps = 8;
 
 // Google Apps Script Web App URL (Replace with your deployed URL)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyw609NmwckCtJFcGF4m2nXBfyjF9gmJ8majf0iO65dL5xLi07l6y6ITpRA78PFrhe9/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHqUR7dD4BADYKywZqiYXe8yg9AgD-aRFhMxmNV_XLFTkmlXQvsiK5JXbRJ04KM4uv/exec';
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -36,7 +36,7 @@ function setupEventListeners() {
     document.getElementById('careerForm').addEventListener('input', debounce(saveToLocalStorage, 500));
     
     // Calculate academic consistency when grades change
-    ['class10', 'class12', 'ugCGPA', 'gradCGPA', 'pgCGPA'].forEach(id => {
+    ['class10', 'class12', 'gradCGPA', 'pgCGPA'].forEach(id => {
         const element = document.getElementById(id);
         if (element) {
             element.addEventListener('input', calculateAcademicConsistency);
@@ -344,7 +344,6 @@ function showValidationError(input, message) {
 function calculateAcademicConsistency() {
     const class10 = parseFloat(document.getElementById('class10').value) || 0;
     const class12 = parseFloat(document.getElementById('class12').value) || 0;
-    const ugCGPA = parseFloat(document.getElementById('ugCGPA').value) || 0;
     const gradCGPA = parseFloat(document.getElementById('gradCGPA').value) || 0;
     const pgCGPA = parseFloat(document.getElementById('pgCGPA').value) || 0;
     
@@ -352,7 +351,6 @@ function calculateAcademicConsistency() {
     const scores = [
         class10 / 100,
         class12 / 100,
-        ugCGPA > 0 ? ugCGPA / 10 : null,
         gradCGPA > 0 ? gradCGPA / 10 : null,
         pgCGPA > 0 ? pgCGPA / 10 : null
     ].filter(score => score !== null && score > 0);
@@ -467,14 +465,11 @@ function collectFormData() {
         class10_percentage: parseFloat(document.getElementById('class10').value) || 0,
         class12_percentage: parseFloat(document.getElementById('class12').value) || 0,
         class12_stream: document.getElementById('class12Stream').value,
-        ug_major: document.getElementById('ugMajor').value || '',
-        ug_cgpa: parseFloat(document.getElementById('ugCGPA').value) || 0,
         grad_major: document.getElementById('gradMajor').value || '',
         grad_cgpa: parseFloat(document.getElementById('gradCGPA').value) || 0,
         pg_major: document.getElementById('pgMajor').value || '',
         pg_cgpa: parseFloat(document.getElementById('pgCGPA').value) || 0,
         highest_education: document.getElementById('highestEducation').value,
-        standardized_test_score: parseFloat(document.getElementById('standardizedTest').value) || 0,
         academic_consistency: parseFloat(document.getElementById('academicConsistency').value) || 0,
         
         // Step 3: Technical & Soft Skills
